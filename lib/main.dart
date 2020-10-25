@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clock_app/enums.dart';
+import 'package:flutter_clock_app/menu_info.dart';
+import 'package:provider/provider.dart';
 
-import 'homePage.dart';
+import 'view/homePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +19,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: ChangeNotifierProvider<MenuInfo>(
+        create: (context)=>MenuInfo(MenuType.clock),
+          child: HomePage()
+      ),
     );
   }
 }
